@@ -31,10 +31,6 @@ filebeat-pkg:
 # Add host entries for elasticsearch and graylog
 # to /etc/hosts:
 
-elasticsearch:
-  host.present:
-    - ip: 10.1.6.40
-
 graylog:
   host.present:
     - ip: 10.1.6.57
@@ -43,7 +39,7 @@ graylog:
 filebeat:
   service.running:
     - enable: True
-    - reload: True
     - watch:
+      - file: /etc/filebeat/filebeat.yml
       - pkg: filebeat
 
